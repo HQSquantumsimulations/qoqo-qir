@@ -1,0 +1,42 @@
+[package]
+name = "qoqo_qir"
+version = "0.1.0"
+authors = ["HQS Quantum Simulations <info@quantumsimulations.de>"]
+license = "Apache-2.0"
+edition = "2021"
+rust-version = "1.56"
+categories = ["science", "simulation"]
+readme = "README.md"
+repository = "https://github.com/HQSquantumsimulations/qoqo_qir"
+description = "QIR interface for roqoqo Rust quantum computing toolkit by HQS Quantum Simulations"
+include = ["src*", "LICENSE", "README.md"]
+
+[lib]
+name = "qoqo_qir"
+path = "src/lib.rs"
+doctest = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+qoqo = { version = "1.13.0", default-features = false, features = [
+    "unstable_operation_definition",
+] }
+roqoqo = { version = "1.13.0", features = ["unstable_operation_definition"] }
+roqoqo-qir = { version = "0.1", path = "../roqoqo-qir" }
+
+[dependencies.pyo3]
+version = "0.21"
+features = ["num-complex"]
+
+[dev-dependencies]
+test-case = "3.0"
+qoqo_calculator = "1.1"
+ndarray = "0.15"
+
+[build-dependencies]
+pyo3-build-config = "0.21"
+
+[features]
+extension-module = ["pyo3/extension-module"]
+default = ["extension-module"]

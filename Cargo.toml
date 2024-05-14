@@ -1,0 +1,13 @@
+[workspace]
+members = ["roqoqo-qir", "qoqo_qir"]
+resolver = "2"
+
+[profile.release]
+lto = true
+
+[profile.bench]
+lto = true
+
+[patch.crates-io]
+roqoqo = { git = "https://github.com/dberthault/qoqo.git" }
+qoqo = { git = "https://github.com/dberthault/qoqo.git" }
