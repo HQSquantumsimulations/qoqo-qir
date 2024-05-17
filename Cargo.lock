@@ -861,9 +861,9 @@ checksum = "3c5e1a9a646d36c3599cd173a41282daf47c44583ad367b8e6837255952e5c67"
 
 [[package]]
 name = "struqture"
-version = "1.7.0"
+version = "1.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d2fe3b5ee158db81a424c6194639a689b67a37b133578ffd8fc9e07e3b6a1f57"
+checksum = "628779c97f727781bb4b9c20d32c1410bf9c86e32090a0841336d7cf6dae7a49"
 dependencies = [
  "itertools",
  "ndarray",
