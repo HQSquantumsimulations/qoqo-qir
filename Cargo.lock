@@ -878,9 +878,9 @@ dependencies = [
 
 [[package]]
 name = "struqture-py"
-version = "1.7.0"
+version = "1.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a608a0a151196d275cdead34c1a804da410a20abde8f8047e3b3603ab2b4271a"
+checksum = "fecd0d102b86be41793c8171abaadb5fbf66deae98e073157d08425dff4ea6c9"
 dependencies = [
  "bincode",
  "num-complex",
