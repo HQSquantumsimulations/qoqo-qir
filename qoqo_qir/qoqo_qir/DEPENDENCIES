@@ -1285,7 +1285,7 @@ END OF TERMS AND CONDITIONS
 
 
 ====================================================
-either 1.11.0
+either 1.12.0
 https://github.com/rayon-rs/either
 by bluss
 The enum `Either` with variants `Left` and `Right` is a general purpose sum type with two cases.
@@ -6051,7 +6051,7 @@ limitations under the License.
 
 
 ====================================================
-libc 0.2.154
+libc 0.2.155
 https://github.com/rust-lang/libc
 by The Rust Project Developers
 Raw FFI bindings to platform libraries like libc.
@@ -10888,7 +10888,7 @@ limitations under the License.
 
 
 ====================================================
-proc-macro2 1.0.82
+proc-macro2 1.0.83
 https://github.com/dtolnay/proc-macro2
 by David Tolnay <dtolnay@gmail.com>, Alex Crichton <alex@alexcrichton.com>
 A substitute implementation of the compiler's `proc_macro` API to decouple token-based libraries from the procedural macro use case.
@@ -16334,7 +16334,7 @@ LICENSE:
 
 
 ====================================================
-schemars 0.8.19
+schemars 0.8.20
 https://graham.cool/schemars/
 by Graham Esau <gesau@hotmail.co.uk>
 Generate JSON Schemas from Rust code
@@ -16366,7 +16366,7 @@ SOFTWARE.
 
 
 ====================================================
-schemars_derive 0.8.19
+schemars_derive 0.8.20
 https://graham.cool/schemars/
 by Graham Esau <gesau@hotmail.co.uk>
 Macros for #[derive(JsonSchema)], for use with schemars
@@ -18248,7 +18248,7 @@ limitations under the License.
 
 
 ====================================================
-struqture 1.7.0
+struqture 1.7.1
 by HQS Quantum Simulations <info@quantumsimulations.de>
 HQS tool for representing operators, Hamiltonians and open systems.
 License: Apache-2.0
@@ -18459,13 +18459,13 @@ LICENSE:
 
 
 ====================================================
-struqture-py 1.7.0
+struqture-py 1.7.1
 by HQS Quantum Simulations <info@quantumsimulations.de>
 Python interface of struqture, the HQS tool for representing operators, Hamiltonians and open systems.
 License: Apache-2.0
 
 ====================================================
-struqture-py-macros 1.7.0
+struqture-py-macros 1.7.1
 by HQS Quantum Simulations <info@quantumsimulations.de>
 Macros for struqture-py crate.
 License: Apache-2.0
@@ -18915,7 +18915,7 @@ limitations under the License.
 
 
 ====================================================
-syn 2.0.63
+syn 2.0.65
 https://github.com/dtolnay/syn
 by David Tolnay <dtolnay@gmail.com>
 Parser for Rust source code
@@ -19456,7 +19456,7 @@ SOFTWARE.
 
 
 ====================================================
-thiserror 1.0.60
+thiserror 1.0.61
 https://github.com/dtolnay/thiserror
 by David Tolnay <dtolnay@gmail.com>
 derive(Error)
@@ -19670,7 +19670,7 @@ END OF TERMS AND CONDITIONS
 
 
 ====================================================
-thiserror-impl 1.0.60
+thiserror-impl 1.0.61
 https://github.com/dtolnay/thiserror
 by David Tolnay <dtolnay@gmail.com>
 Implementation detail of the `thiserror` crate
@@ -21567,7 +21567,7 @@ limitations under the License.
 
 
 ====================================================
-wide 0.7.19
+wide 0.7.20
 https://github.com/Lokathor/wide
 by Lokathor <zefria@gmail.com>
 A crate to help you go wide.
