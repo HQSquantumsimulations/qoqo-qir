@@ -498,7 +498,7 @@ dependencies = [
  "proc-macro2",
  "pyo3-macros-backend",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -511,13 +511,14 @@ dependencies = [
  "proc-macro2",
  "pyo3-build-config 0.21.2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
 name = "qoqo"
 version = "1.13.0"
-source = "git+https://github.com/dberthault/qoqo.git#4eb5babbe5fd6c97d27092da004dc49f530e346f"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fcedb8e2e0263a0321c33bbad6779c62f876efa829854645ca1ff653c3735fa7"
 dependencies = [
  "bincode",
  "ndarray",
@@ -536,19 +537,20 @@ dependencies = [
  "serde_json",
  "struqture",
  "struqture-py",
- "syn 2.0.65",
+ "syn 2.0.66",
  "thiserror",
 ]
 
 [[package]]
 name = "qoqo-macros"
 version = "1.13.0"
-source = "git+https://github.com/dberthault/qoqo.git#4eb5babbe5fd6c97d27092da004dc49f530e346f"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd5a9a2e3a4bf32052e6f5debae72a7516509abf4abcd35a3fbbdf2c28513282"
 dependencies = [
  "proc-macro2",
  "quote",
  "struqture",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -658,7 +660,8 @@ dependencies = [
 [[package]]
 name = "roqoqo"
 version = "1.13.0"
-source = "git+https://github.com/dberthault/qoqo.git#4eb5babbe5fd6c97d27092da004dc49f530e346f"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "41d057c48765be39ec0bce7a47dc55e88e7cb78064f2645c7f578437e01d0f7c"
 dependencies = [
  "bincode",
  "nalgebra",
@@ -673,18 +676,19 @@ dependencies = [
  "roqoqo-derive",
  "serde",
  "struqture",
- "syn 2.0.65",
+ "syn 2.0.66",
  "thiserror",
 ]
 
 [[package]]
 name = "roqoqo-derive"
 version = "1.13.0"
-source = "git+https://github.com/dberthault/qoqo.git#4eb5babbe5fd6c97d27092da004dc49f530e346f"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "718c535f6983d3c12d8cd57b10a2c72508c9f8a0f8b51c13b5e5a48a47c87140"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -730,9 +734,9 @@ dependencies = [
 
 [[package]]
 name = "schemars"
-version = "0.8.20"
+version = "0.8.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b0218ceea14babe24a4a5836f86ade86c1effbc198164e619194cb5069187e29"
+checksum = "09c024468a378b7e36765cd36702b7a90cc3cba11654f6685c8f233408e89e92"
 dependencies = [
  "dyn-clone",
  "schemars_derive",
@@ -742,14 +746,14 @@ dependencies = [
 
 [[package]]
 name = "schemars_derive"
-version = "0.8.20"
+version = "0.8.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ed5a1ccce8ff962e31a165d41f6e2a2dd1245099dc4d594f5574a86cd90f4d3"
+checksum = "b1eee588578aff73f856ab961cd2f79e36bc45d7ded33a7562adba4667aecc0e"
 dependencies = [
  "proc-macro2",
  "quote",
  "serde_derive_internals",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -781,7 +785,7 @@ checksum = "6048858004bcff69094cd972ed40a32500f153bd3be9f716b2eed2e8217c4838"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -792,7 +796,7 @@ checksum = "18d26a20a969b9e3fdf2fc2d9f21eda6c40e2de84c9408bb5d3b05d499aae711"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -828,7 +832,7 @@ checksum = "82fe9db325bcef1fbcde82e078a5cc4efdf787e96b3b9cf45b50b529f2083d67"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -896,7 +900,7 @@ dependencies = [
  "serde_json",
  "struqture",
  "struqture-py-macros",
- "syn 2.0.65",
+ "syn 2.0.66",
  "thiserror",
 ]
 
@@ -909,7 +913,7 @@ dependencies = [
  "num-complex",
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -925,9 +929,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.65"
+version = "2.0.66"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d2863d96a84c6439701d7a38f9de935ec562c8832cc55d1dde0f513b52fad106"
+checksum = "c42f3f41a2de00b01c0aaad383c5a45241efc8b2d1eda5661812fda5f3cdcff5"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -958,7 +962,7 @@ dependencies = [
  "cfg-if",
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
@@ -969,7 +973,7 @@ checksum = "5c89e72a01ed4c579669add59014b9a524d609c0c88c6a585ce37485879f6ffb"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
  "test-case-core",
 ]
 
@@ -990,7 +994,7 @@ checksum = "46c3384250002a6d5af4d114f2845d37b57521033f30d5c3f46c4d70e1197533"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.65",
+ "syn 2.0.66",
 ]
 
 [[package]]
