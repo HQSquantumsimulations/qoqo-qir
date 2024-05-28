@@ -13,7 +13,7 @@
 //! Testing the roqoqo-qir Backend
 //! run with `RUST_TEST_THREADS=1 cargo test`
 
-use std::vec;
+use std::{fs, path::Path, vec};
 
 use qoqo_calculator::CalculatorFloat;
 use roqoqo::{operations::*, Circuit};
@@ -404,6 +404,71 @@ fn test_gate_definition_circuit() {
 
     let qir_str = backend.circuit_to_qir_str(&circuit, false).unwrap();
     assert_eq!(qir_str, "%Qubit = type opaque\n%Result = type opaque\n\ndefine void @main() #0 {\nentry:\n  call void @__quantum__qis__y__body(%Qubit* inttoptr (i64 0 to %Qubit*))\n  call void @__quantum__qis__z__body(%Qubit* inttoptr (i64 1 to %Qubit*))\n  call void @rotate_bell(double 3.141592653589793, %Qubit* inttoptr (i64 1 to %Qubit*), %Qubit* inttoptr (i64 2 to %Qubit*))\n  call void @rotate_measure(double 0.1, %Qubit* inttoptr (i64 2 to %Qubit*), %Qubit* inttoptr (i64 0 to %Qubit*))\n  call void @__quantum__qis__mz__body(%Qubit* inttoptr (i64 0 to %Qubit*), %Result* inttoptr (i64 0 to %Result*)) #1\n  ret void\n}\n\ndeclare void @__quantum__qis__rx__body(double, %Qubit*)\ndeclare void @__quantum__qis__rz__body(double, %Qubit*)\ndeclare void @__quantum__qis__mz__body(%Qubit*, %Result* writeonly) #1\n\ndefine void @rotate_measure(double %phi, %Qubit* %qubit1, %Qubit* %qubit2) #1 {\nentry:\n  call void @__quantum__qis__rx__body(double 0.7853981633974483, %Qubit* %qubit1)\n  call void @__quantum__qis__rz__body(double %phi, %Qubit* %qubit2)\n  call void @__quantum__qis__mz__body(%Qubit* %qubit2, %Result* inttoptr (i64 1 to %Result*)) #1\n  ret void\n}\n\ndeclare void @__quantum__qis__x__body(%Qubit*)\ndeclare void @__quantum__qis__h__body(%Qubit*)\ndeclare void @__quantum__qis__cnot__body(%Qubit*, %Qubit*)\n\ndefine void @rotate_bell(double %theta, %Qubit* %qubit0, %Qubit* %qubit1) {\nentry:\n  call void @__quantum__qis__x__body(%Qubit* %qubit0)\n  call void @__quantum__qis__h__body(%Qubit* %qubit0)\n  call void @__quantum__qis__cnot__body(%Qubit* %qubit0, %Qubit* %qubit1)\n  call void @__quantum__qis__rx__body(double %theta, %Qubit* %qubit0)\n  call void @__quantum__qis__rx__body(double 2.54, %Qubit* %qubit1)\n  ret void\n}\n\ndeclare void @__quantum__qis__y__body(%Qubit*)\ndeclare void @__quantum__qis__z__body(%Qubit*)\n\nattributes #0 = { \"entry_point\" \"required_num_qubits\"=\"3\" \"required_num_results\"=\"1\" \"output_labeling_schema\" \"qir_profiles\"=\"base_profile\" \"irreversible\" }\nattributes #1 = { \"irreversible\" }\n\n!llvm.module.flags = !{!0, !1, !2, !3}\n\n!0 = !{i32 1, !\"qir_major_version\", i32 1}\n!1 = !{i32 7, !\"qir_minor_version\", i32 0}\n!2 = !{i32 1, !\"dynamic_qubit_management\", i1 false}\n!3 = !{i32 1, !\"dynamic_result_management\", i1 false}");
+}
+
+#[test]
+#[serial]
+fn test_simple_circuit_measure() {
+    let backend = Backend::new(None, None).unwrap();
+    let mut circuit = Circuit::new();
+    circuit.add_operation(PauliX::new(0));
+    let qir_str = backend.circuit_to_qir_str(&circuit, true).unwrap();
+    assert_eq!(qir_str, "%Qubit = type opaque\n%Result = type opaque\n\ndefine void @main() #0 {\nentry:\n  call void @__quantum__qis__x__body(%Qubit* inttoptr (i64 0 to %Qubit*))\n  call void @__quantum__qis__mz__body(%Qubit* inttoptr (i64 0 to %Qubit*), %Result* inttoptr (i64 0 to %Result*)) #1\n  call void @__quantum__rt__array_record_output(i64 1, i8* null)\n  call void @__quantum__rt__result_record_output(%Result* inttoptr (i64 0 to %Result*), i8* null)\n  ret void\n}\n\ndeclare void @__quantum__qis__x__body(%Qubit*)\ndeclare void @__quantum__qis__mz__body(%Qubit*, %Result* writeonly) #1\ndeclare void @__quantum__rt__result_record_output(%Result*, i8*)\ndeclare void @__quantum__rt__array_record_output(i64, i8*)\n\nattributes #0 = { \"entry_point\" \"required_num_qubits\"=\"1\" \"required_num_results\"=\"1\" \"output_labeling_schema\" \"qir_profiles\"=\"base_profile\" \"irreversible\" }\nattributes #1 = { \"irreversible\" }\n\n!llvm.module.flags = !{!0, !1, !2, !3}\n\n!0 = !{i32 1, !\"qir_major_version\", i32 1}\n!1 = !{i32 7, !\"qir_minor_version\", i32 0}\n!2 = !{i32 1, !\"dynamic_qubit_management\", i1 false}\n!3 = !{i32 1, !\"dynamic_result_management\", i1 false}");
+}
+
+#[test]
+#[serial]
+fn test_process_circuit() {
+    let backend = Backend::new(None, None).unwrap();
+    let mut circuit = Circuit::new();
+    circuit.add_operation(GateDefinition::new(
+        Circuit::new(),
+        "name".to_owned(),
+        vec![0, 1],
+        vec![],
+    ));
+    circuit.add_operation(PragmaConditional::new("ro".to_owned(), 1, Circuit::new()));
+    circuit.add_operation(PragmaLoop::new(CalculatorFloat::ONE, Circuit::new()));
+    circuit.add_operation(SqrtPauliX::new(0));
+    circuit.add_operation(PhaseShiftState1::new(0, CalculatorFloat::ZERO));
+    circuit.add_operation(ControlledPauliY::new(0, 1));
+
+    let mut gate_circ = Circuit::new();
+    gate_circ.add_operation(GateDefinition::new(
+        circuit.clone(),
+        "name2".to_owned(),
+        vec![0],
+        vec![],
+    ));
+    assert!(backend.circuit_to_qir_str(&circuit, false).is_ok());
+    assert!(backend.circuit_to_qir_str(&gate_circ, false).is_ok());
+}
+
+#[test]
+#[serial]
+fn test_file_error() {
+    let backend = Backend::new(None, None).unwrap();
+    let mut circuit = Circuit::new();
+    circuit.add_operation(PauliX::new(0));
+    backend
+        .circuit_to_qir_file(
+            &circuit,
+            Path::new("."),
+            Path::new("Cargo.toml"),
+            false,
+            true,
+        )
+        .unwrap();
+    assert!(backend
+        .circuit_to_qir_file(
+            &circuit,
+            Path::new("."),
+            Path::new("Cargo.toml"),
+            false,
+            true
+        )
+        .is_err());
+    fs::remove_file(Path::new("Cargo.ll")).unwrap();
 }
 
 /// Test Debug, Clone and PartialEq for Backend

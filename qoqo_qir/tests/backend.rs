@@ -12,8 +12,12 @@
 //
 //! Testing the qoqo-qir Backend
 
-use pyo3::{types::PyAnyMethods, Bound, Python};
+use std::{fs, path::Path};
+
+use pyo3::{types::PyAnyMethods, Bound, Py, Python};
 use qoqo::{operations::convert_operation_to_pyobject, CircuitWrapper};
+use qoqo_calculator::CalculatorFloat;
+use qoqo_calculator_pyo3::CalculatorFloatWrapper;
 use qoqo_qir::QirBackendWrapper;
 use roqoqo::{operations::*, Circuit};
 
@@ -44,6 +48,16 @@ fn new_qirbackend(
 }
 
 #[test]
+fn test_backend_error() {
+    pyo3::prepare_freethreaded_python();
+    Python::with_gil(|py| {
+        let backend_type = py.get_type_bound::<QirBackendWrapper>();
+        assert!(backend_type.call1(("error", "0.1")).is_err());
+        assert!(backend_type.call1(("base_profile", "error")).is_err());
+    })
+}
+
+#[test]
 fn test_simple_circuit() {
     let mut circuit = Circuit::new();
     circuit.add_operation(PauliX::new(0));
@@ -59,6 +73,79 @@ fn test_simple_circuit() {
             .extract()
             .unwrap();
         assert_eq!(result, "%Qubit = type opaque\n\ndefine void @main() #0 {\nentry:\n  call void @__quantum__qis__x__body(%Qubit* inttoptr (i64 0 to %Qubit*))\n  ret void\n}\n\ndeclare void @__quantum__qis__x__body(%Qubit*)\n\nattributes #0 = { \"entry_point\" \"required_num_qubits\"=\"1\" \"required_num_results\"=\"0\" \"output_labeling_schema\" \"qir_profiles\"=\"base_profile\" }\n\n!llvm.module.flags = !{!0, !1, !2, !3}\n\n!0 = !{i32 1, !\"qir_major_version\", i32 1}\n!1 = !{i32 7, !\"qir_minor_version\", i32 0}\n!2 = !{i32 1, !\"dynamic_qubit_management\", i1 false}\n!3 = !{i32 1, !\"dynamic_result_management\", i1 false}");
+    });
+}
+
+#[test]
+fn test_to_str_errors() {
+    let mut circuit = Circuit::new();
+    circuit.add_operation(PauliX::new(0));
+    circuit.add_operation(QuantumRabi::new(0, 0, CalculatorFloat::ZERO));
+
+    pyo3::prepare_freethreaded_python();
+    Python::with_gil(|py| {
+        let backendpy = new_qirbackend(py, None, None);
+        let circuitpy = circuitpy_from_circuitru(py, circuit);
+        let calc = Py::new(
+            py,
+            CalculatorFloatWrapper {
+                internal: CalculatorFloat::from("0.0"),
+            },
+        )
+        .unwrap();
+
+        assert!(backendpy
+            .call_method1("circuit_to_qir_str", (calc,))
+            .is_err());
+        assert!(backendpy
+            .call_method1("circuit_to_qir_str", (circuitpy,))
+            .is_err());
+    });
+}
+
+#[test]
+fn test_to_file_errors() {
+    let mut circuit = Circuit::new();
+    circuit.add_operation(PauliX::new(0));
+    circuit.add_operation(QuantumRabi::new(0, 0, CalculatorFloat::ZERO));
+
+    pyo3::prepare_freethreaded_python();
+    Python::with_gil(|py| {
+        let backendpy = new_qirbackend(py, None, None);
+        let circuitpy = circuitpy_from_circuitru(py, circuit);
+        let calc = Py::new(
+            py,
+            CalculatorFloatWrapper {
+                internal: CalculatorFloat::from("0.0"),
+            },
+        )
+        .unwrap();
+
+        assert!(backendpy
+            .call_method1("circuit_to_qir_file", (calc,))
+            .is_err());
+        assert!(backendpy
+            .call_method1("circuit_to_qir_file", (circuitpy,))
+            .is_err());
+    });
+}
+
+#[test]
+fn test_simple_circuit_file() {
+    let mut circuit = Circuit::new();
+    circuit.add_operation(PauliX::new(0));
+
+    pyo3::prepare_freethreaded_python();
+    Python::with_gil(|py| {
+        let backendpy = new_qirbackend(py, None, None);
+        let circuitpy = circuitpy_from_circuitru(py, circuit);
+
+        let _result = backendpy
+            .call_method1("circuit_to_qir_file", (circuitpy,))
+            .unwrap();
+        let read_in_path = Path::new("qir_output.ll");
+        assert!(read_in_path.exists());
+        fs::remove_file(read_in_path).unwrap();
     });
 }
 

@@ -20,7 +20,7 @@ doctest = false
 
 [dependencies]
 roqoqo = { version = "1.13.0", features = ["unstable_operation_definition"] }
-qoqo_calculator = { version = "1.1" }
+qoqo_calculator = { version = "1.2" }
 lazy_static = "1.4.0"
 
 [dev-dependencies]

@@ -1,3 +1,0 @@
-pytest
-qoqo
-qoqo_qir
