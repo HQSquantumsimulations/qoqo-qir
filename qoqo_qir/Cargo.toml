@@ -22,7 +22,7 @@ doctest = false
 qoqo = { version = "1.13.0", default-features = false, features = [
     "unstable_operation_definition",
 ] }
-roqoqo = { version = "1.13.0", features = ["unstable_operation_definition"] }
+roqoqo = { version = "1.14.0", features = ["unstable_operation_definition"] }
 roqoqo-qir = { version = "0.1", path = "../roqoqo-qir" }
 
 [dependencies.pyo3]
