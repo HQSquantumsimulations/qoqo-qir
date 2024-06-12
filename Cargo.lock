@@ -543,9 +543,9 @@ dependencies = [
 
 [[package]]
 name = "qoqo-macros"
-version = "1.13.0"
+version = "1.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bd5a9a2e3a4bf32052e6f5debae72a7516509abf4abcd35a3fbbdf2c28513282"
+checksum = "58334799cb43ae7b5334a4e48081eb0809cf5aa4f8a855808bde329d9277a659"
 dependencies = [
  "proc-macro2",
  "quote",
