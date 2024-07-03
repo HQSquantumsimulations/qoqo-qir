@@ -489,6 +489,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "pyo3-build-config"
+version = "0.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ab7164b2202753bd33afc7f90a10355a719aa973d1f94502c50d06f3488bc420"
+dependencies = [
+ "once_cell",
+ "target-lexicon",
+]
+
+[[package]]
 name = "pyo3-ffi"
 version = "0.21.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -595,7 +605,7 @@ version = "0.1.0"
 dependencies = [
  "ndarray",
  "pyo3",
- "pyo3-build-config 0.21.2",
+ "pyo3-build-config 0.22.0",
  "qoqo",
  "qoqo_calculator",
  "qoqo_calculator_pyo3",
