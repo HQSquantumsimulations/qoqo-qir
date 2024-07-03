@@ -488,7 +488,6 @@ pub fn call_operation(operation: &Operation) -> Result<String, RoqoqoBackendErro
         Operation::PragmaConditional(op) => {
             let mut nb_vars = NUMBER_VARS.lock().unwrap();
             let mut nb_conditional = NUMBER_LABEL.lock().unwrap();
-            println!("pragma: {}, {}", nb_vars, nb_conditional);
             let mut output_str = format!(
                 "  %{} = call i1 @__quantum__qis__read_result__body(%Result* {})\n",
                 *nb_vars,
