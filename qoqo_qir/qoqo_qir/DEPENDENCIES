@@ -12318,7 +12318,11 @@ LICENSE-APACHE:
 
 
 ====================================================
+<<<<<<< HEAD
 qoqo 1.15.1
+=======
+qoqo 1.14.0
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 https://github.com/HQSquantumsimulations/qoqo
 by HQS Quantum Simulations <info@quantumsimulations.de>
 Quantum computing circuit toolkit. Python interface of roqoqo
@@ -12530,7 +12534,11 @@ LICENSE:
 
 
 ====================================================
+<<<<<<< HEAD
 qoqo-macros 1.15.1
+=======
+qoqo-macros 1.14.0
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 by HQS Quantum Simulations <info@quantumsimulations.de>
 Macros for the qoqo crate
 License: Apache-2.0
@@ -14754,7 +14762,11 @@ limitations under the License.
 
 
 ====================================================
+<<<<<<< HEAD
 redox_syscall 0.5.3
+=======
+redox_syscall 0.5.2
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 https://gitlab.redox-os.org/redox-os/syscall
 by Jeremy Soller <jackpot51@gmail.com>
 A Rust library to access raw Redox system calls
@@ -15512,7 +15524,11 @@ limitations under the License.
 
 
 ====================================================
+<<<<<<< HEAD
 roqoqo 1.15.1
+=======
+roqoqo 1.14.0
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 https://github.com/HQSquantumsimulations/qoqo
 by HQS Quantum Simulations <info@quantumsimulations.de>
 Rust Quantum Computing Toolkit by HQS
@@ -15724,7 +15740,11 @@ LICENSE:
 
 
 ====================================================
+<<<<<<< HEAD
 roqoqo-derive 1.15.1
+=======
+roqoqo-derive 1.14.0
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 by HQS Quantum Simulations <info@quantumsimulations.de>
 Macros for the roqoqo crate
 License: Apache-2.0
@@ -19243,7 +19263,11 @@ LICENSE:
 
 
 ====================================================
+<<<<<<< HEAD
 syn 2.0.72
+=======
+syn 2.0.68
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 https://github.com/dtolnay/syn
 by David Tolnay <dtolnay@gmail.com>
 Parser for Rust source code
@@ -20212,7 +20236,11 @@ END OF TERMS AND CONDITIONS
 
 
 ====================================================
+<<<<<<< HEAD
 tinyvec 1.8.0
+=======
+tinyvec 1.6.1
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 https://github.com/Lokathor/tinyvec
 by Lokathor <zefria@gmail.com>
 `tinyvec` provides 100% safe vec-like data structures.
@@ -21895,7 +21923,11 @@ limitations under the License.
 
 
 ====================================================
+<<<<<<< HEAD
 wide 0.7.26
+=======
+wide 0.7.25
+>>>>>>> 745c9046a994b8b1f59a95fcaa28d6fa374d7dd3
 https://github.com/Lokathor/wide
 by Lokathor <zefria@gmail.com>
 A crate to help you go wide.
