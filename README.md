@@ -23,6 +23,8 @@ qoqo-qir provides the QirBackend class that allows users translate a qoqo circui
 Not all qoqo operations have a corresponding QIR expression.  
 Circuits containing operations without a corresponding expression can not be translated.
 
+If you intend to use the produced QIR expression with the QIR alliance's QIR-runner you should use the measure_all argument.
+
 A source distribution now exists but requires a Rust install with a rust version > 1.47 and a maturin version { >= 0.14, <0.15 } in order to be built.
 
 ## roqoqo-qir
