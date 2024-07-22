@@ -22,4 +22,4 @@ and Create a QIR file with QirBackend.
 
 """
 
-from .qoqo_qir import *
+from .qoqo_qir import * # type: ignore

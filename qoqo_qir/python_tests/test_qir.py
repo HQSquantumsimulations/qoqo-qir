@@ -14,7 +14,7 @@ import pytest
 import sys
 from qoqo_qir import QirBackend
 from qoqo import Circuit
-from qoqo import operations as ops
+from qoqo import operations as ops # type: ignore
 
 
 def test_qir() -> None:

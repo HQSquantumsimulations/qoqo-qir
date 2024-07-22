@@ -11,6 +11,8 @@ roqoqo-qir provides the QirBackend class that allows users translate a roqoqo ci
 Not all roqoqo operations have a corresponding QIR expression.  
 Circuits containing operations without a corresponding expression can not be translated.
 
+If you intend to use the produced QIR expression with the QIR alliance's QIR-runner you should use the measure_all argument.
+
 ## General Notes
 
 This software is still in the beta stage. Functions and documentation are not yet complete and breaking changes can occur.
