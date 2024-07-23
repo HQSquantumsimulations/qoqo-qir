@@ -1,3 +1,7 @@
 # Changelog
 
-This changelog track changes to the qoqo project starting at version v0.2.0
+This changelog track changes to the qoqo-qir project starting at version v0.1.0
+
+## 0.1.0
+
+* Initial commit
