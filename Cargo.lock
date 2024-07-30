@@ -581,7 +581,7 @@ dependencies = [
 
 [[package]]
 name = "qoqo_qir"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "ndarray",
  "pyo3",
@@ -723,7 +723,7 @@ dependencies = [
 
 [[package]]
 name = "roqoqo-qir"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "lazy_static",
  "qoqo_calculator",
@@ -755,9 +755,9 @@ dependencies = [
 
 [[package]]
 name = "scc"
-version = "2.1.4"
+version = "2.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a4465c22496331e20eb047ff46e7366455bc01c0c02015c4a376de0b2cd3a1af"
+checksum = "1fadf67e3cf23f8b11a6c8c48a16cb2437381503615acd91094ec7b4686a5a53"
 dependencies = [
  "sdd",
 ]
