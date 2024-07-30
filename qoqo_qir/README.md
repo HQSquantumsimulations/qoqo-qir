@@ -10,7 +10,7 @@ QIR interface for the qoqo quantum toolkit by [HQS Quantum Simulations](https://
 
 qoqo-qir provides the QirBackend class that allows users translate a qoqo circuit into a QIR file.
 Not all qoqo operations have a corresponding QIR expression.  
-Circuits containing operations without a corresponding expression can not be translated.
+Circuits containing operations without a corresponding expression cannot be translated.
 
 If you intend to use the produced QIR expression with the QIR alliance's QIR-runner you should use the measure_all argument.
 

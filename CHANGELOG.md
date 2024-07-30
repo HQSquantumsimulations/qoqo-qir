@@ -4,7 +4,7 @@ This changelog track changes to the qoqo-qir project starting at version v0.1.0
 
 ## 0.1.1
 
-* Add READMEs
+* Added READMEs
 
 ## 0.1.0
 
