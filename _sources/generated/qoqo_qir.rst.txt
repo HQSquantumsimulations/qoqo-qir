@@ -1,0 +1,12 @@
+﻿qoqo\_qir
+=========
+
+.. automodule:: qoqo_qir
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      QirBackend
+   
