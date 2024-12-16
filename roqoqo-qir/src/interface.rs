@@ -476,9 +476,11 @@ pub fn call_operation(operation: &Operation) -> Result<String, RoqoqoBackendErro
                 .map(|param| format!("double {}", format_calculator(param)))
                 .collect::<Vec<String>>()
                 .join(", "),
-            (!op.free_parameters().is_empty() && !op.qubits().is_empty())
-                .then(|| ", ")
-                .unwrap_or(""),
+            if !op.free_parameters().is_empty() && !op.qubits().is_empty() {
+                ", "
+            } else {
+                ""
+            },
             op.qubits()
                 .iter()
                 .map(|qubit| format!("%Qubit* {}", format_arg(qubit, "Qubit")))
@@ -828,23 +830,19 @@ pub fn gate_declaration(operation: &Operation) -> Result<String, RoqoqoBackendEr
                     .map(|param| format!("double %{}", param))
                     .collect::<Vec<String>>()
                     .join(", "),
-                (!gate_definition.free_parameters().is_empty() && !gate_definition.qubits().is_empty())
-                    .then(|| ", ")
-                    .unwrap_or(""),
+                if !gate_definition.free_parameters().is_empty() && !gate_definition.qubits().is_empty() { ", " } else { "" },
                 gate_definition
                     .qubits()
                     .iter()
                     .map(|&qubit| format!("%Qubit* %qubit{}", qubit).to_owned())
                     .collect::<Vec<String>>()
                     .join(", "),
-                gate_definition
+                if gate_definition
                     .circuit()
                     .iter()
                     .filter(|&op| matches!(op, Operation::MeasureQubit(_)))
                     .collect::<Vec<&Operation>>()
-                    .is_empty()
-                    .then(|| "")
-                    .unwrap_or("#1 ")
+                    .is_empty() { "" } else { "#1 " }
             );
             for operation in gate_definition.circuit().iter() {
                 definition_str.push_str(&call_operation(operation)?);
