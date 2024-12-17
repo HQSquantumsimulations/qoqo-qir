@@ -36,7 +36,6 @@ use crate::{
 /// user on whatever platform they see fit.
 ///
 ///
-
 fn process_operation_circuit(
     circuit: &Circuit,
     already_seen_declarations: &mut Vec<String>,
@@ -324,7 +323,7 @@ impl Backend {
                     "attributes #0 = {{ \"entry_point\" \"required_num_qubits\"=\"{}\" \"required_num_results\"=\"{}\" \"output_labeling_schema\" \"qir_profiles\"=\"base_profile\"{} }}\n",
                     number_qubits_required,
                     number_bits_required,
-                    has_measurements.then(|| " \"irreversible\"").unwrap_or("")
+                    if has_measurements { " \"irreversible\"" } else { "" }
                 );
                 if has_measurements {
                     attributes.push_str("attributes #1 = { \"irreversible\" }\n");

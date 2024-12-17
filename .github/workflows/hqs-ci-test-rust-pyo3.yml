@@ -16,6 +16,8 @@ jobs:
       windows: true
       # Run tests also on macos runners
       macos: true
+      # Whether to build for python 3.13. To remove after updating to pyo3 0.22
+      python_3_13: false
       # Test code coverage of rust core is over 90 percent
       test_code_coverage: true
       rust_package_name: "roqoqo-qir"
@@ -27,5 +29,7 @@ jobs:
       windows: true
       # Run tests also on macos runners
       macos: false
+      # Whether to build for python 3.13. To remove after updating to pyo3 0.22
+      python_3_13: false
       py_interface_folder: "qoqo_qir"
       has_python_tests: true

@@ -38,6 +38,8 @@ jobs:
     with: 
       py_interface_folder: "qoqo_qir"
       deploy: true
+      # Whether to build for python 3.13. To remove after updating to pyo3 0.22
+      python_3_13: false
       # Whether to build for aarch64. Can fail if there are C/C++ dependencies
       build_for_arm: true
     secrets: inherit
@@ -49,6 +51,8 @@ jobs:
     uses: HQSquantumsimulations/reusable_workflows/.github/workflows/reusable_build_maturin_macos.yml@main
     with: 
       py_interface_folder: "qoqo_qir"
+      # Whether to build for python 3.13. To remove after updating to pyo3 0.22
+      python_3_13: false
       # Try to build python wheels with universal2 for arm and x86
       universal2: true
       deploy: true
@@ -61,5 +65,7 @@ jobs:
     uses: HQSquantumsimulations/reusable_workflows/.github/workflows/reusable_build_maturin_windows.yml@main
     with: 
       py_interface_folder: "qoqo_qir"
+      # Whether to build for python 3.13. To remove after updating to pyo3 0.22
+      python_3_13: false
       deploy: true
     secrets: inherit
