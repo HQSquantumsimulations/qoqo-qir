@@ -330,6 +330,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "ndarray"
+version = "0.16.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "882ed72dce9365842bf196bdeedf5055305f11fc8c03dee7bb0194a6cad34841"
+dependencies = [
+ "matrixmultiply",
+ "num-complex",
+ "num-integer",
+ "num-traits",
+ "portable-atomic",
+ "portable-atomic-util",
+ "rawpointer",
+]
+
+[[package]]
 name = "num-bigint"
 version = "0.4.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -386,7 +401,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec170733ca37175f5d75a5bea5911d6ff45d2cd52849ce98b685394e4f2f37f4"
 dependencies = [
  "libc",
- "ndarray",
+ "ndarray 0.15.6",
  "num-complex",
  "num-integer",
  "num-traits",
@@ -458,6 +473,15 @@ name = "portable-atomic"
 version = "1.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "280dc24453071f1b63954171985a0b0d30058d287960968b9b2aca264c8d4ee6"
+
+[[package]]
+name = "portable-atomic-util"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d8a2f0d8d040d7848a709caf78912debcc3f33ee4b3cac47d73d1e1069e83507"
+dependencies = [
+ "portable-atomic",
+]
 
 [[package]]
 name = "ppv-lite86"
@@ -549,7 +573,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a9011d644c0224a197824703541a2700f5f2d2f63a5968b3c9bb99415df462eb"
 dependencies = [
  "bincode",
- "ndarray",
+ "ndarray 0.15.6",
  "num-complex",
  "numpy",
  "proc-macro2",
@@ -612,7 +636,7 @@ dependencies = [
 name = "qoqo_qir"
 version = "0.1.2"
 dependencies = [
- "ndarray",
+ "ndarray 0.16.1",
  "pyo3",
  "pyo3-build-config",
  "qoqo",
@@ -724,7 +748,7 @@ checksum = "b0c82b86e77bd26f733f170209b3e40bc1223584ea76c9e1f1be27a6b3f8dce4"
 dependencies = [
  "bincode",
  "nalgebra",
- "ndarray",
+ "ndarray 0.15.6",
  "num-complex",
  "petgraph",
  "proc-macro2",
@@ -930,7 +954,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7d2f2566561f41f3ea377bd6d952bdec12430fc9f322ee0fb291080e2a012f42"
 dependencies = [
  "itertools 0.13.0",
- "ndarray",
+ "ndarray 0.15.6",
  "num-complex",
  "qoqo_calculator",
  "schemars",
@@ -948,7 +972,7 @@ checksum = "8ec79acf34c1f18f4f29f6331d97380da7fac3d0d152003f4693ec46b3fadc31"
 dependencies = [
  "indexmap",
  "itertools 0.12.1",
- "ndarray",
+ "ndarray 0.15.6",
  "num-complex",
  "qoqo_calculator",
  "serde",

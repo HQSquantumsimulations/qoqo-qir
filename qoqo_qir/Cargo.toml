@@ -33,7 +33,7 @@ features = ["num-complex"]
 qoqo_calculator_pyo3 = { version = "~1.2", default-features = false }
 test-case = "3.0"
 qoqo_calculator = "~1.2"
-ndarray = "0.15"
+ndarray = "0.16"
 
 [build-dependencies]
 pyo3-build-config = "0.21"
