@@ -44,6 +44,7 @@ impl QirBackendWrapper {
     /// Returns:
     ///     Self: The new QirBackend intance.
     #[new]
+    #[pyo3(signature = (qir_profile=None, qir_version=None))]
     pub fn new(qir_profile: Option<String>, qir_version: Option<String>) -> PyResult<Self> {
         Ok(Self {
             internal: Backend::new(qir_profile, qir_version)
