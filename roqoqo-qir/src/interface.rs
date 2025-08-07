@@ -519,10 +519,11 @@ pub fn call_operation(operation: &Operation) -> Result<String, RoqoqoBackendErro
                 output_str.push_str(&format!(
                     "  %{} = phi i64 [ 1, %{} ], [ %{}, %loop{} ]\n",
                     *nb_var,
-                    (*nb_loop)
-                        .eq(&0)
-                        .then(|| "entry".to_owned())
-                        .unwrap_or_else(|| format!("continue{}", *nb_loop - 1)),
+                    if *nb_loop == 0 {
+                        "entry".to_owned()
+                    } else {
+                        format!("continue{}", *nb_loop - 1)
+                    },
                     *nb_var + 2,
                     *nb_loop
                 ));
@@ -781,13 +782,16 @@ pub fn call_operation(operation: &Operation) -> Result<String, RoqoqoBackendErro
                 format_arg(op.target(), "Qubit"),
             ))
         }
-        _ => NO_CALL_OPERATIONS
-            .contains(&operation.hqslang())
-            .then(|| Ok("".to_owned()))
-            .unwrap_or(Err(RoqoqoBackendError::OperationNotInBackend {
-                backend: "QirBackend",
-                hqslang: operation.hqslang(),
-            })),
+        _ => {
+            if NO_CALL_OPERATIONS.contains(&operation.hqslang()) {
+                Ok("".to_owned())
+            } else {
+                Err(RoqoqoBackendError::OperationNotInBackend {
+                    backend: "QirBackend",
+                    hqslang: operation.hqslang(),
+                })
+            }
+        }
     }
 }
 
@@ -879,12 +883,10 @@ pub fn gate_declaration(operation: &Operation) -> Result<String, RoqoqoBackendEr
         Operation::ControlledPauliY(_) => {
             Ok("\ndefine void @cy(%Qubit* qubit0, %Qubit* qubit1) {\nentry:\n  call void @__quantum__qis__s__adj(%Qubit* qubit1)\n  call void @__quantum__qis__cnot__body(%Qubit* qubit0, %Qubit* qubit1)\n  call void @__quantum__qis__s__body(%Qubit* qubit1)\n  ret void\n}\n".to_owned())
         }
-        _ => NO_DECLARATION_OPERATIONS
-            .contains(&operation.hqslang())
-            .then(|| Ok("".to_owned()))
-            .unwrap_or(Err(RoqoqoBackendError::OperationNotInBackend {
+        _ => if NO_DECLARATION_OPERATIONS
+            .contains(&operation.hqslang()) { Ok("".to_owned()) } else { Err(RoqoqoBackendError::OperationNotInBackend {
                 backend: "QirBackend",
                 hqslang: operation.hqslang(),
-            })),
+            }) },
     }
 }
