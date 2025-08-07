@@ -1,6 +1,6 @@
 [package]
 name = "qoqo_qir"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["HQS Quantum Simulations <info@quantumsimulations.de>"]
 license = "Apache-2.0"
 edition = "2021"
@@ -19,25 +19,25 @@ doctest = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-qoqo = { version = "~1.18", default-features = false, features = [
+qoqo = { version = "~1.21", default-features = false, features = [
     "unstable_operation_definition",
 ] }
-roqoqo = { version = "~1.18", features = ["unstable_operation_definition"] }
-roqoqo-qir = { version = "0.2", path = "../roqoqo-qir" }
+roqoqo = { version = "~1.21", features = ["unstable_operation_definition"] }
+roqoqo-qir = { version = "0.3", path = "../roqoqo-qir" }
 
 [dependencies.pyo3]
-version = "0.22"
+version = "0.25"
 features = ["num-complex"]
 
 [dev-dependencies]
-qoqo_calculator_pyo3 = { version = "~1.4", default-features = false }
+qoqo_calculator_pyo3 = { version = "~1.7", default-features = false }
 test-case = "3.0"
-qoqo_calculator = "~1.4"
+qoqo_calculator = "~1.7"
 ndarray = "0.16"
 
 [build-dependencies]
-pyo3-build-config = "0.22"
-pyo3 = "0.22"
+pyo3-build-config = "0.25"
+pyo3 = "0.25"
 
 [features]
 extension-module = ["pyo3/extension-module"]
