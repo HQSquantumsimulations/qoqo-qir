@@ -23,14 +23,12 @@ use roqoqo::{operations::*, Circuit};
 
 // helper functions
 fn circuitpy_from_circuitru(py: Python, circuit: Circuit) -> Bound<CircuitWrapper> {
-    let circuit_type = py.get_type_bound::<CircuitWrapper>();
+    let circuit_type = py.get_type::<CircuitWrapper>();
     let binding = circuit_type.call0().unwrap();
     let circuitpy = binding.downcast::<CircuitWrapper>().unwrap();
     for op in circuit {
-        let new_op = convert_operation_to_pyobject(op).unwrap();
-        circuitpy
-            .call_method1("add", (new_op.clone_ref(py),))
-            .unwrap();
+        let new_op = convert_operation_to_pyobject(op, py).unwrap();
+        circuitpy.call_method1("add", (new_op.clone(),)).unwrap();
     }
     circuitpy.to_owned()
 }
@@ -40,7 +38,7 @@ fn new_qirbackend(
     qir_profile: Option<String>,
     qir_version: Option<String>,
 ) -> Bound<QirBackendWrapper> {
-    let backend_type = py.get_type_bound::<QirBackendWrapper>();
+    let backend_type = py.get_type::<QirBackendWrapper>();
     backend_type
         .call1((qir_profile, qir_version))
         .unwrap()
@@ -53,7 +51,7 @@ fn new_qirbackend(
 fn test_backend_error() {
     pyo3::prepare_freethreaded_python();
     Python::with_gil(|py| {
-        let backend_type = py.get_type_bound::<QirBackendWrapper>();
+        let backend_type = py.get_type::<QirBackendWrapper>();
         assert!(backend_type.call1(("error", "0.1")).is_err());
         assert!(backend_type.call1(("base_profile", "error")).is_err());
     })

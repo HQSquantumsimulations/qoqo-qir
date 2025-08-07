@@ -11,7 +11,7 @@ This repository contains two components:
 
 ## qoqo-qir
 
-[![Documentation Status](https://img.shields.io/badge/docs-read-blue)](https://hqsquantumsimulations.github.io/qoqo_qir/)
+[![Documentation Status](https://img.shields.io/badge/docs-read-blue)](https://hqsquantumsimulations.github.io/qoqo-qir/generated/qoqo_qir.html#module-qoqo_qir)
 [![GitHub Workflow Status](https://github.com/HQSquantumsimulations/qoqo_qir/workflows/ci_tests/badge.svg)](https://github.com/HQSquantumsimulations/qoqo_qir/actions)
 [![PyPI](https://img.shields.io/pypi/v/qoqo_qir)](https://pypi.org/project/qoqo_qir/)
 [![PyPI - Format](https://img.shields.io/pypi/format/qoqo_qir)](https://pypi.org/project/qoqo_qir/)
@@ -22,6 +22,8 @@ QIR interface for the qoqo quantum toolkit by [HQS Quantum Simulations](https://
 qoqo-qir provides the QirBackend class that allows users translate a qoqo circuit into a QIR file.
 Not all qoqo operations have a corresponding QIR expression.  
 Circuits containing operations without a corresponding expression can not be translated.
+
+The API documentation is available [here](https://hqsquantumsimulations.github.io/qoqo-qir/generated/qoqo_qir.html#module-qoqo_qir).
 
 If you intend to use the produced QIR expression with the QIR alliance's QIR-runner you should use the measure_all argument.
 
